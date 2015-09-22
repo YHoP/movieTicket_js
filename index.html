@@ -6,6 +6,7 @@
     <script src="js/jquery-1.11.3.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
+    <script src="js/videoScript.js"></script>
     <title>hyggelig</title>
   </head>
   <body>
@@ -24,12 +25,13 @@
                   <center><img src="img/minionsposter2.jpg" alt="Minions 2"></center>
                   <div class="caption">
                     <center><h3>Minions 2</h3></center>
-                      <button type="button" class="btn btn-primary btn-block btn-modal" data-toggle="modal" data-target="#frontModal">Watch the trailer!</button>
-                    <div class="row-fluid">
+                      <button type="button" class="btn btn-primary btn-block btn-modal" data-toggle="modal" data-target="#videoModal">Watch the trailer!</button>
 
-                      <button type="button" class="btn btn-primary col-xs-3 btn-times" value="1000" data-toggle="modal" data-target="#frontModal">10:00</button>
-                      <button type="button" class="btn btn-primary col-xs-3 btn-times" value="1100" data-toggle="modal" data-target="#frontModal">11:00</button>
-                      <button type="button" class="btn btn-primary col-xs-3 btn-times" value="1200" data-toggle="modal" data-target="#frontModal">12:00</button>
+
+                    <div class="row-fluid">
+                      <button type="button" class="btn btn-primary col-xs-3 btn-time-early" value="1000" data-toggle="modal" data-target="#frontModal">10:00</button>
+                      <button type="button" class="btn btn-primary col-xs-3 btn-time-early" value="1100" data-toggle="modal" data-target="#frontModal">11:00</button>
+                      <button type="button" class="btn btn-primary col-xs-3 btn-time-late" value="2000" data-toggle="modal" data-target="#frontModal">8:00</button>
 
                   </div>
                 </div>
@@ -42,6 +44,29 @@
     </div>
   </div>
   <!--hidden modal-->
+
+  <!-- Modal -->
+  <div id="videoModal" class="modal fade">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" id="clear" class="close" data-dismiss="modal" >X</button>
+          <h4 class="modal-title">Minions 2 Trailer</h4>
+        </div>
+        <div class="modal-body">
+
+        <center>  <div id="player"></div> </center>
+
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+
+    </div>
+  </div> <!-- End of Modal -->
+
 
   <!-- Modal -->
   <div id="frontModal" class="modal fade">
@@ -61,7 +86,7 @@
               <td><label for="youth">Youth</label></td>
               <td><input type="text" class="youth_ticket" style="width: 30px;"></td>
               <td>x</td>
-              <td>$ 7.00</td>
+              <td>$ <span class="youth"></span>.00</td>
               <td>=</td>
               <td><span class="youth_price"></span></td>
             </tr>
@@ -69,7 +94,7 @@
               <td><label for="adult">Adult</label></td>
               <td><input type="text" class="adult_ticket" style="width: 30px;"></td>
               <td>x</td>
-              <td>$ 10.00</td>
+              <td>$ <span class="adult"></span>.00</td>
               <td>=</td>
               <td><span class="adult_price"></span></td>
             </tr>
@@ -77,7 +102,7 @@
               <td><label for="senior">Senior</label></td>
               <td><input type="text" class="senior_ticket" style="width: 30px;"></td>
               <td>x</td>
-              <td>$ 8.00</span></td>
+              <td>$ <span class="senior"></span>.00</td>
               <td>=</td>
               <td><span class="senior_price"></span></td>
             </tr>
@@ -98,7 +123,7 @@
       </div>
 
     </div>
-  </div>
+  </div> <!-- End of Modal -->
 
   </body>
 
