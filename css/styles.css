@@ -1,0 +1,15 @@
+li {
+  list-style-type: none;
+}
+
+.btn {
+  margin: 2px;
+}
+
+.btn-times {
+  font-size: 12px;
+}
+
+td {
+  padding: 8px;
+}
