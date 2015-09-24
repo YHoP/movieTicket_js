@@ -4,7 +4,7 @@
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-1.11.3.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/videoScript.js"></script>
     <title>hyggelig</title>
@@ -18,25 +18,8 @@
 
       <div class="row-fluid">
 
-          <div class="row-fluid">
-            <ul>
-              <li class="col-md-4">
-                <div>
-                  <center><img src="img/minionsposter2.jpg" alt="Minions 2"></center>
-                  <div class="caption">
-                    <center><h3>Minions 2</h3></center>
-                      <button type="button" class="btn btn-primary btn-block btn-modal" data-toggle="modal" data-target="#videoModal">Watch the trailer!</button>
-
-
-                    <div class="row-fluid">
-                      <button type="button" class="btn btn-primary col-xs-3 btn-time-early" value="1000" data-toggle="modal" data-target="#frontModal">10:00</button>
-                      <button type="button" class="btn btn-primary col-xs-3 btn-time-early" value="1100" data-toggle="modal" data-target="#frontModal">11:00</button>
-                      <button type="button" class="btn btn-primary col-xs-3 btn-time-late" value="2000" data-toggle="modal" data-target="#frontModal">8:00</button>
-
-                  </div>
-                </div>
-               </div>
-              </li>
+        <div class="row-fluid">
+          <ul id="moiveList">
 
           </ul>
         </div><!-- end of row inside loop -->
@@ -52,12 +35,12 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" id="clear" class="close" data-dismiss="modal" >X</button>
+          <button type="button" id="stopVideo" class="close" data-dismiss="modal" >X</button>
           <h4 class="modal-title">Minions 2 Trailer</h4>
         </div>
         <div class="modal-body">
 
-        <center>  <div id="player"></div> </center>
+        <center><div id="player"></div> </center>
 
         </div>
         <div class="modal-footer">
@@ -75,11 +58,11 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" id="clear" class="close" data-dismiss="modal" >X</button>
+          <button type="button" id="clear" class="close" data-dismiss="modal"> X </button>
           <h4 class="modal-title">Purchase Tickets</h4>
         </div>
         <div class="modal-body">
-          <form id="buyTicket" method="post">
+          <form id="buyTicket">
 
           <table>
             <tr>
@@ -112,11 +95,14 @@
               <td></td>
               <td>$ <span class="total_price"></span>.00</td>
               <td></td>
-              <td><button type="submit" id="buy" class="btn btn-info">Purchase</button></td>
+              <td><button type="button" id="purchase" class="btn btn-info">Purchase</button></td>
             </tr>
           </table>
-
           </form>
+          <div id="purchased">
+            <h3>Your total is $ <span class="totalPurchase"></span>.00</h3>
+            <h4>Cash only. Please pay at door.</h4>
+          </div>
         </div>
         <div class="modal-footer">
         </div>
