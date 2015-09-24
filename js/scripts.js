@@ -15,16 +15,13 @@ movie.prototype.ratingCheck = function() {
   }
 };
 
-
 var setMatineePrices = function(){
-  debugger;
     youthPrice = 5;
     adultPrice = 5;
     seniorPrice = 5;
 };
 
 var setInitialPrices = function() {
-  debugger;
   youthPrice = 7;
   adultPrice = 10;
   seniorPrice = 8;
@@ -49,54 +46,36 @@ var totalPrice = function(resultOne, resultTwo, resultThree) {
 };
 
 
-
 $(document).ready(function() {
-//debugger;
 var youthResult = 0;
 var adultResult = 0;
 var seniorResult = 0;
+var totalPurchase = 0;
+$("#purchased").hide();
 
-$(".btn-time-early").click(function(){
-  debugger;
-  var time = parseInt($("button.btn-time-early").val());
-  console.log(isMatinee(time));
+$(".showTime").click(function(){
+  console.log($(this));
+  var time = parseInt($(this).val());
+  console.log(time);
   if(isMatinee(time)){
     setMatineePrices();
   } else {
     setInitialPrices();
   }
-  console.log(isMatinee(time));
 
   $(".youth").text(youthPrice);
   $(".adult").text(adultPrice);
   $(".senior").text(seniorPrice);
-
-});
-
-$(".btn-time-late").click(function(){
-  debugger;
-  var time = parseInt($("button.btn-time-late").val());
-  console.log(isMatinee(time));
-  if(isMatinee(time)){
-    setMatineePrices();
-  } else {
-    setInitialPrices();
-  }
-  console.log(isMatinee(time));
-
-  $(".youth").text(youthPrice);
-  $(".adult").text(adultPrice);
-  $(".senior").text(seniorPrice);
-
 });
 
 $( ".youth_ticket" ).keyup(function() {
   var numOfTickets = parseInt($("input.youth_ticket").val());
   youthResult = getTotal(numOfTickets, youthPrice);
   var youthResultText = "$ " + youthResult + ".00";
-  $(".youth_price").text(youthResultText);
-  $(".total_price").text(totalPrice(youthResult, adultResult, seniorResult));
 
+  $(".youth_price").text(youthResultText);
+  totalPurchase = totalPrice(youthResult, adultResult, seniorResult);
+  $(".total_price").text(totalPurchase);
   });
 
 $( ".adult_ticket" ).keyup(function() {
@@ -105,33 +84,34 @@ $( ".adult_ticket" ).keyup(function() {
   var adultResultText = "$ " + adultResult + ".00";
 
   $(".adult_price").text(adultResultText);
-  $(".total_price").text(totalPrice(youthResult, adultResult, seniorResult));
+  totalPurchase = totalPrice(youthResult, adultResult, seniorResult);
+  $(".total_price").text(totalPurchase);
   });
 
 $( ".senior_ticket" ).keyup(function() {
   var numOfTickets = parseInt($("input.senior_ticket").val());
-  //change 8 to variable that can be changed in the isMatinee method
   seniorResult = getTotal(numOfTickets, seniorPrice);
   var seniorResultText = "$ " + seniorResult + ".00";
 
   $(".senior_price").text(seniorResultText);
-  $(".total_price").text(totalPrice(youthResult, adultResult, seniorResult));
+  totalPurchase = totalPrice(youthResult, adultResult, seniorResult);
+  $(".total_price").text(totalPurchase);
+  });
+
+  $("#purchase").click(function(){
+    $("#buyTicket").hide();
+    $("#purchased").show();
+    $(".totalPurchase").text(totalPurchase);
   });
 
   $("#clear").click(function() {
     stopVideo();
-//fix this
     $("input.youth_ticket").val("");
     $("input.adult_ticket").val("");
     $("input.senior_ticket").val("");
      youthResult = 0;
      adultResult = 0;
      seniorResult = 0;
-
   });
-
-
-
-
 
 }); // end of document
